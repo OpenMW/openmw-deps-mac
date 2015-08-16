@@ -17,7 +17,7 @@ endif ()
 set(SUBPROJECT_CMAKE_ARGS
                         "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
                         "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}"
-                        "-DCMAKE_PREFIX_PATH:PATH=${CMAKE_CURRENT_SOURCE_DIR}/../dependencies/openscenegraph"
+                        "-DCMAKE_PREFIX_PATH:PATH=${CMAKE_INSTALL_PREFIX}"
                         "-DPKG_CONFIG_USE_CMAKE_PREFIX_PATH=ON"
                         "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}"
                         "-DCMAKE_OSX_SYSROOT=${CMAKE_OSX_SYSROOT}"
@@ -33,10 +33,21 @@ ExternalProject_Add(
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
 )
 
+ExternalProject_Add(
+  freetype2
+  URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.bz2
+  URL_HASH SHA256=8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e
+
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
+  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/freetype2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-harfbuzz
+  BUILD_COMMAND make
+)
+
 set(MYGUI_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DMYGUI_RENDERSYSTEM=1;-DMYGUI_BUILD_DEMOS=OFF;-DMYGUI_BUILD_TOOLS=OFF;-DMYGUI_BUILD_PLUGINS=OFF")
 
 ExternalProject_Add(
   mygui
+  DEPENDS freetype2
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/mygui
   CMAKE_ARGS ${MYGUI_CMAKE_ARGS}
 )
@@ -67,7 +78,7 @@ set(OSG_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS}"
 
 ExternalProject_Add(
   openscenegraph
-  DEPENDS SDL2
+  DEPENDS SDL2 freetype2
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
   CMAKE_ARGS ${OSG_CMAKE_ARGS}
 )
