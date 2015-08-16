@@ -18,6 +18,7 @@ set(SUBPROJECT_CMAKE_ARGS
                         "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
                         "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}"
                         "-DCMAKE_PREFIX_PATH:PATH=${CMAKE_CURRENT_SOURCE_DIR}/../dependencies/openscenegraph"
+                        "-DPKG_CONFIG_USE_CMAKE_PREFIX_PATH=ON"
                         "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}"
                         "-DCMAKE_OSX_SYSROOT=${CMAKE_OSX_SYSROOT}"
                         "-DCMAKE_MACOSX_RPATH=ON"
