@@ -43,6 +43,26 @@ ExternalProject_Add(
   BUILD_COMMAND make
 )
 
+ExternalProject_Add(
+  libpng
+  URL ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.18.tar.xz
+  URL_HASH SHA256=2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963
+
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
+  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
+  BUILD_COMMAND make
+)
+
+ExternalProject_Add(
+  libjpeg
+  URL http://www.ijg.org/files/jpegsrc.v8d.tar.gz
+  URL_HASH SHA256=00029b1473f0f0ea72fbca3230e8cb25797fbb27e58ae2e46bb8bf5a806fe0b3
+
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg
+  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg/configure --prefix=${CMAKE_INSTALL_PREFIX}
+  BUILD_COMMAND make
+)
+
 set(MYGUI_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DMYGUI_RENDERSYSTEM=1;-DMYGUI_BUILD_DEMOS=OFF;-DMYGUI_BUILD_TOOLS=OFF;-DMYGUI_BUILD_PLUGINS=OFF")
 
 ExternalProject_Add(
@@ -78,7 +98,7 @@ set(OSG_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS}"
 
 ExternalProject_Add(
   openscenegraph
-  DEPENDS SDL2 freetype2
+  DEPENDS SDL2 freetype2 libpng libjpeg
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
   CMAKE_ARGS ${OSG_CMAKE_ARGS}
 )
