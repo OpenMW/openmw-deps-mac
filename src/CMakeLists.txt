@@ -88,12 +88,6 @@ set(OSG_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS}"
                     "-DDESIRED_QT_VERSION=4"
                     "-DOSG_CXX_LANGUAGE_STANDARD=C++98"
                     "-DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1"
-
-                    # this libs are not reqired on OS X since we have almighty ImageIO framework
-                    "-DCMAKE_DISABLE_FIND_PACKAGE_PNG=1"
-                    "-DCMAKE_DISABLE_FIND_PACKAGE_JPEG=1"
-                    "-DCMAKE_DISABLE_FIND_PACKAGE_TIFF=1"
-                    "-DCMAKE_DISABLE_FIND_PACKAGE_GIFLIB=1"
 )
 
 ExternalProject_Add(
