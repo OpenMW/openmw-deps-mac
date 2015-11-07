@@ -8,7 +8,7 @@ if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif ()
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.8")
-set(CMAKE_OSX_SYSROOT "macosx10.10")
+set(CMAKE_OSX_SYSROOT "macosx10.11")
 
 if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: Debug, Release" FORCE)
