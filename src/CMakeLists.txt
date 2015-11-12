@@ -14,10 +14,14 @@ if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: Debug, Release" FORCE)
 endif ()
 
+if (NOT PATH_TO_QT)
+  message (FATAL_ERROR "Path to your Qt installation is required")
+endif ()
+
 set(SUBPROJECT_CMAKE_ARGS
                         "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
                         "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}"
-                        "-DCMAKE_PREFIX_PATH:PATH=${CMAKE_INSTALL_PREFIX}"
+                        "-DCMAKE_PREFIX_PATH=${CMAKE_INSTALL_PREFIX}$<SEMICOLON>${PATH_TO_QT}"
                         "-DPKG_CONFIG_USE_CMAKE_PREFIX_PATH=ON"
                         "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}"
                         "-DCMAKE_OSX_SYSROOT=${CMAKE_OSX_SYSROOT}"
@@ -85,7 +89,6 @@ set(OSG_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS}"
                     "-DOSG_USE_FLOAT_PLANE=ON"
                     "-DBUILD_OSG_APPLICATIONS=OFF"
                     "-DBUILD_OSG_EXAMPLES=OFF"
-                    "-DDESIRED_QT_VERSION=4"
                     "-DOSG_CXX_LANGUAGE_STANDARD=C++98"
                     "-DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1"
 )
