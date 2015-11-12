@@ -45,7 +45,7 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   libpng
-  URL ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.18.tar.xz
+  URL https://dl.bintray.com/homebrew/mirror/libpng-1.6.18.tar.xz
   URL_HASH SHA256=2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
