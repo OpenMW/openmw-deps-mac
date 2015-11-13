@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b44ef8b..7dd1bc2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1108,7 +1108,7 @@ IF(APPLE AND NOT ANDROID)
+         # FORCE is used because the options are not reflected in the UI otherwise.
+         # Seems like a good place to add version specific compiler flags too.
+         IF(NOT OSG_CONFIG_HAS_BEEN_RUN_BEFORE)
+-            IF(${OSG_OSX_SDK_NAME} STREQUAL "macosx10.8" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.9" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.10")
++            IF(${OSG_OSX_SDK_NAME} STREQUAL "macosx10.8" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.9" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.10" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.11")
+                 SET(OSG_DEFAULT_IMAGE_PLUGIN_FOR_OSX "imageio" CACHE STRING "Forced imageio default image plugin for OSX" FORCE)
+                 # 64 Bit Works, i386,ppc is not supported any more
+                 SET(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE STRING "Build architectures for OSX" FORCE)
+diff --git a/CMakeModules/FindAVFoundation.cmake b/CMakeModules/FindAVFoundation.cmake
+index 63bc381..21ce76b 100644
+--- a/CMakeModules/FindAVFoundation.cmake
++++ b/CMakeModules/FindAVFoundation.cmake
+@@ -30,7 +30,7 @@ ELSE()
+       # AVFoundation exists since 10.7, but only 10.8 has all features necessary for OSG
+       # so check the SDK-setting
+ 
+-      IF(${OSG_OSX_SDK_NAME} STREQUAL "macosx10.8" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.9" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.10")
++      IF(${OSG_OSX_SDK_NAME} STREQUAL "macosx10.8" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.9" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.10" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.11")
+           # nothing special here ;-)
+       ELSE()
+           MESSAGE("AVFoundation disabled for SDK < 10.8")
+diff --git a/CMakeModules/FindQuickTime.cmake b/CMakeModules/FindQuickTime.cmake
+index bffc99b..be7a6a4 100644
+--- a/CMakeModules/FindQuickTime.cmake
++++ b/CMakeModules/FindQuickTime.cmake
+@@ -65,7 +65,7 @@ ELSE()
+       ENDIF()
+       # Disable quicktime for >= 10.7, as it's officially deprecated
+ 
+-      IF(${OSG_OSX_SDK_NAME} STREQUAL "macosx10.7" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.8" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.9" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.10")
++      IF(${OSG_OSX_SDK_NAME} STREQUAL "macosx10.7" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.8" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.9" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.10" OR ${OSG_OSX_SDK_NAME} STREQUAL "macosx10.11")
+           MESSAGE("disabling quicktime because it's not supported by the selected SDK ${OSG_OSX_SDK_NAME}")
+           SET(QUICKTIME_FOUND "NO")
+       ENDIF()

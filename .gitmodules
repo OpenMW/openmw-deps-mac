@@ -1,6 +1,3 @@
-[submodule "src/openscenegraph"]
-	path = src/openscenegraph
-	url = https://github.com/openscenegraph/osg.git
 [submodule "src/SDL2"]
 	path = src/SDL2
 	url = https://github.com/spurious/SDL-mirror.git

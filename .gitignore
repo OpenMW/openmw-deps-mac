@@ -2,3 +2,4 @@ src/ffmpeg
 src/freetype2
 src/libjpeg
 src/libpng
+src/openscenegraph
