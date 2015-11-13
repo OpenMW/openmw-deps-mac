@@ -37,6 +37,31 @@ ExternalProject_Add(
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
 )
 
+set(FFMPEG_CFLAGS "-mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+set(FFMPEG_LDFLAGS ${FFMPEG_CFLAGS})
+set(FFMPEG_CONFIGURE_ARGS
+  "--prefix=${CMAKE_INSTALL_PREFIX}"
+  "--disable-programs"
+  "--disable-iconv"
+  "--disable-doc"
+  "--disable-demuxer=matroska"
+  "--disable-network"
+  "--disable-securetransport"
+  "--disable-videotoolbox"
+  "--extra-cflags=${FFMPEG_CFLAGS}"
+  "--extra-ldflags=${FFMPEG_LDFLAGS}"
+)
+
+ExternalProject_Add(
+  ffmpeg
+  URL https://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2
+  URL_HASH SHA256=e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2
+
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg
+  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/configure ${FFMPEG_CONFIGURE_ARGS}
+  BUILD_COMMAND make
+)
+
 ExternalProject_Add(
   freetype2
   URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.bz2
