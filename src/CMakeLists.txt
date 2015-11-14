@@ -127,3 +127,17 @@ ExternalProject_Add(
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
   CMAKE_ARGS ${OSG_CMAKE_ARGS}
 )
+
+set(UNSHIELD_CMAKE_ARGS
+  "${SUBPROJECT_CMAKE_ARGS}"
+  "-DUSE_OUR_OWN_MD5=ON"
+)
+
+ExternalProject_Add(
+  unshield
+  URL https://github.com/twogood/unshield/archive/1.3.tar.gz
+  URL_HASH SHA256=31a49c43b60e86b3ed731e0a1b988b88d35b755c85d103e93e1507278328bf73
+  PATCH_COMMAND patch -p1 -d ${CMAKE_CURRENT_SOURCE_DIR}/unshield < ${CMAKE_CURRENT_SOURCE_DIR}/unshield.patch
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/unshield
+  CMAKE_ARGS ${UNSHIELD_CMAKE_ARGS}
+)
