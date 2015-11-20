@@ -2,5 +2,6 @@ src/ffmpeg
 src/freetype2
 src/libjpeg
 src/libpng
+src/mygui
 src/openscenegraph
 src/unshield

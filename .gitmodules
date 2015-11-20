@@ -1,9 +1,6 @@
 [submodule "src/SDL2"]
 	path = src/SDL2
 	url = https://github.com/spurious/SDL-mirror.git
-[submodule "src/mygui"]
-	path = src/mygui
-	url = https://github.com/MyGUI/mygui.git
 [submodule "src/bullet"]
 	path = src/bullet
 	url = https://github.com/bulletphysics/bullet3.git
