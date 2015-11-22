@@ -1,8 +1,17 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b44ef8b..7dd1bc2 100644
+index b44ef8b..85c29cd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1108,7 +1108,7 @@ IF(APPLE AND NOT ANDROID)
+@@ -799,6 +799,8 @@ IF(NOT ANDROID)
+         ENDIF()
+ 
+     ELSE()
++        FIND_PACKAGE(JPEG)
++        FIND_PACKAGE(PNG)
+         FIND_PACKAGE(TIFF)
+         FIND_PACKAGE(QuickTime)
+         FIND_PACKAGE(QTKit)
+@@ -1108,7 +1110,7 @@ IF(APPLE AND NOT ANDROID)
          # FORCE is used because the options are not reflected in the UI otherwise.
          # Seems like a good place to add version specific compiler flags too.
          IF(NOT OSG_CONFIG_HAS_BEEN_RUN_BEFORE)
@@ -37,3 +46,40 @@ index bffc99b..be7a6a4 100644
            MESSAGE("disabling quicktime because it's not supported by the selected SDK ${OSG_OSX_SDK_NAME}")
            SET(QUICKTIME_FOUND "NO")
        ENDIF()
+diff --git a/src/osgDB/Registry.cpp b/src/osgDB/Registry.cpp
+index 14a8d04..83bacf2 100644
+--- a/src/osgDB/Registry.cpp
++++ b/src/osgDB/Registry.cpp
+@@ -308,18 +308,6 @@ Registry::Registry()
+ 
+     addFileExtensionAlias("js", "V8");
+ 
+-#if defined(DARWIN_IMAGEIO)
+-    addFileExtensionAlias("jpg",  "imageio");
+-    addFileExtensionAlias("jpe",  "imageio");
+-    addFileExtensionAlias("jpeg", "imageio");
+-    addFileExtensionAlias("tif",  "imageio");
+-    addFileExtensionAlias("tiff", "imageio");
+-    addFileExtensionAlias("gif",  "imageio");
+-    addFileExtensionAlias("png",  "imageio");
+-    addFileExtensionAlias("psd",  "imageio");
+-    addFileExtensionAlias("tga",  "imageio");
+-
+-#endif
+ 
+ #if defined(USE_QTKIT)
+     addFileExtensionAlias("mov",  "QTKit");
+diff --git a/src/osgPlugins/CMakeLists.txt b/src/osgPlugins/CMakeLists.txt
+index f2ca656..dbeb39c 100644
+--- a/src/osgPlugins/CMakeLists.txt
++++ b/src/osgPlugins/CMakeLists.txt
+@@ -215,9 +215,6 @@ ENDIF()
+ #    ADD_SUBDIRECTORY(OpenAL)
+ # ENDIF()
+ 
+-IF(APPLE AND NOT ANDROID)
+-    ADD_SUBDIRECTORY(imageio)
+-ENDIF()
+ 
+ IF(AV_FOUNDATION_FOUND)
+     ADD_SUBDIRECTORY(avfoundation)
