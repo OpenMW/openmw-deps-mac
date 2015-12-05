@@ -18,6 +18,9 @@ if (NOT PATH_TO_QT)
   message (FATAL_ERROR "Path to your Qt installation is required")
 endif ()
 
+set(CONFIGURE_WRAPPER "${OPENMW_DEPS_BINARY_DIR}/configure-wrapper.sh")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/configure-wrapper.sh.in" ${CONFIGURE_WRAPPER} @ONLY)
+
 set(SUBPROJECT_CMAKE_ARGS
   "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
   "-DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}"
@@ -37,8 +40,6 @@ ExternalProject_Add(
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
 )
 
-set(FFMPEG_CFLAGS "-mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
-set(FFMPEG_LDFLAGS ${FFMPEG_CFLAGS})
 set(FFMPEG_CONFIGURE_ARGS
   "--prefix=${CMAKE_INSTALL_PREFIX}"
   "--disable-programs"
@@ -48,8 +49,6 @@ set(FFMPEG_CONFIGURE_ARGS
   "--disable-network"
   "--disable-securetransport"
   "--disable-videotoolbox"
-  "--extra-cflags=${FFMPEG_CFLAGS}"
-  "--extra-ldflags=${FFMPEG_LDFLAGS}"
 )
 
 ExternalProject_Add(
@@ -58,7 +57,7 @@ ExternalProject_Add(
   URL_HASH SHA256=e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg
-  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/configure ${FFMPEG_CONFIGURE_ARGS}
+  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/configure ${FFMPEG_CONFIGURE_ARGS}
   BUILD_COMMAND make
 )
 
@@ -68,7 +67,7 @@ ExternalProject_Add(
   URL_HASH SHA256=8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
-  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/freetype2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-harfbuzz
+  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/freetype2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-harfbuzz
   BUILD_COMMAND make
 )
 
@@ -78,7 +77,7 @@ ExternalProject_Add(
   URL_HASH SHA256=311c5657f53516986c67713c946f616483e3cdb52b8b2ee26711be74e8ac35e8
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
-  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
+  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND make
 )
 
@@ -88,7 +87,7 @@ ExternalProject_Add(
   URL_HASH SHA256=00029b1473f0f0ea72fbca3230e8cb25797fbb27e58ae2e46bb8bf5a806fe0b3
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg
-  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg/configure --prefix=${CMAKE_INSTALL_PREFIX}
+  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg/configure --prefix=${CMAKE_INSTALL_PREFIX}
   BUILD_COMMAND make
 )
 
@@ -107,7 +106,7 @@ ExternalProject_Add(
 ExternalProject_Add(
   SDL2
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDL2
-  CONFIGURE_COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/SDL2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-x
+  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/SDL2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-x
   BUILD_COMMAND make
 )
 
