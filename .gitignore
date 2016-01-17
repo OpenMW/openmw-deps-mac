@@ -1,7 +1,9 @@
+src/bullet
 src/ffmpeg
 src/freetype2
 src/libjpeg
 src/libpng
 src/mygui
 src/openscenegraph
+src/SDL2
 src/unshield

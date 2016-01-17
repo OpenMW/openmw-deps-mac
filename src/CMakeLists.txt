@@ -36,6 +36,9 @@ set(BULLET_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DBUILD_BULLET3=OFF;-DBUILD_BULL
 
 ExternalProject_Add(
   bullet
+  URL https://github.com/bulletphysics/bullet3/archive/2.83.6.tar.gz
+  URL_HASH SHA256=dcd5448f31ded71c7bd22fddd7d816ac590ae7b97e1fdda8d1253f8ff3655571
+
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bullet
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
 )
@@ -105,6 +108,9 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   SDL2
+  URL https://libsdl.org/release/SDL2-2.0.4.tar.gz
+  URL_HASH SHA256=da55e540bf6331824153805d58b590a29c39d2d506c6d02fa409aedeab21174b
+
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDL2
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/SDL2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-x
   BUILD_COMMAND make
