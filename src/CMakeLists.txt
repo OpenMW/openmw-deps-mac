@@ -73,7 +73,7 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   libpng
-  URL http://sourceforge.net/projects/libpng/files/libpng16/1.6.19/libpng-1.6.19.tar.xz/download
+  URL http://sourceforge.net/projects/libpng/files/libpng16/older-releases/1.6.19/libpng-1.6.19.tar.xz/download
   URL_HASH SHA256=311c5657f53516986c67713c946f616483e3cdb52b8b2ee26711be74e8ac35e8
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
