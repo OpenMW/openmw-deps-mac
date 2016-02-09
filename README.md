@@ -1,14 +1,6 @@
 This repository's intent is to provide an automated way to build all dependencies
 required for [OpenMW](https://github.com/openmw/openmw).
 
-# Current limitations
-
-Currently this repo doesn't include Boost libraries. If you just want to build
-OpenMW and play around, I recommend using Homebrew to install them. If you want
-to redistribute, please use this [Homebrew tap](https://github.com/openmw/homebrew-openmw)
-and `openmw-boost` formula. It's a temporary solution, though, and this tap will
-go away eventually.
-
 # Prerequisites
 
 * Xcode with OS X 10.11 SDK (7.0+)

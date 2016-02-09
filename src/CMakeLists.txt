@@ -32,6 +32,43 @@ set(SUBPROJECT_CMAKE_ARGS
   "-DCMAKE_INSTALL_RPATH=${CMAKE_INSTALL_PREFIX}/lib"
 )
 
+set(BOOST_B2_USER_CONFIG "${OPENMW_DEPS_BINARY_DIR}/boost-user-config.jam")
+set(BOOST_DARWIN_PATCH "${OPENMW_DEPS_BINARY_DIR}/boost-darwin.patch")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/boost-user-config.jam.in" ${BOOST_B2_USER_CONFIG})
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/boost-darwin.patch.in" ${BOOST_DARWIN_PATCH} @ONLY)
+
+if (CMAKE_BUILD_TYPE EQUAL "Debug")
+  set(BOOST_VARIANT "debug")
+else ()
+  set(BOOST_VARIANT "release")
+endif ()
+
+set(BOOST_BOOTSTRAP_ARGS
+  "--without-icu"
+  "--without-libraries=python,mpi"
+)
+
+set(BOOST_B2_ARGS
+  "--prefix=${CMAKE_INSTALL_PREFIX}"
+  "--user-config=${BOOST_B2_USER_CONFIG}"
+  "--variant=${BOOST_VARIANT}"
+  "install"
+  "link=shared"
+  "threading=multi"
+)
+
+ExternalProject_Add(
+  boost
+  URL https://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2
+  URL_HASH SHA256=686affff989ac2488f79a97b9479efb9f2abae035b5ed4d8226de6857933fd3b
+  PATCH_COMMAND patch -p1 -d ${CMAKE_CURRENT_SOURCE_DIR}/boost < ${BOOST_DARWIN_PATCH}
+
+  BUILD_IN_SOURCE 1
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/boost
+  CONFIGURE_COMMAND ./bootstrap.sh ${BOOST_BOOTSTRAP_ARGS}
+  BUILD_COMMAND ./b2 ${BOOST_B2_ARGS}
+)
+
 set(BULLET_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DBUILD_BULLET3=OFF;-DBUILD_BULLET2_DEMOS=OFF;-DBUILD_CPU_DEMOS=OFF;-DBUILD_EXTRAS=OFF")
 
 ExternalProject_Add(
