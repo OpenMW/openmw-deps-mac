@@ -1,0 +1,24 @@
+language: cpp
+os:
+  - osx
+env:
+  - BUILD_ARTIFACTS=boost
+  - BUILD_ARTIFACTS=openscenegraph
+  - BUILD_ARTIFACTS="bullet ffmpeg mygui SDL2 unshield"
+osx_image: xcode8.2
+branches:
+  only:
+    - master
+    - /openmw-deps-mac-*.$/
+before_install:
+  - brew update
+  - brew rm cmake || true
+  - brew rm pkgconfig || true
+  - brew rm yasm || true
+  - brew install cmake pkgconfig yasm
+before_script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_BUILD_TYPE=Debug ..
+script:
+  - make -j6 $BUILD_ARTIFACTS
