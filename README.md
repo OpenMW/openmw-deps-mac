@@ -5,15 +5,13 @@ required for [OpenMW](https://github.com/openmw/openmw).
 
 * Xcode with OS X 10.11 SDK (7.0+)
 * CMake
-* Qt SDK. Only Qt5 is tested so far. Official downloadable SDK is recommended for
-making redistributable builds. Otherwise, one from Homebrew should do the trick
 * pkg-config
 
 # Building & installing
 
 * Clone the repo
 * Create build dir
-* Run CMake, Qt SDK path is mandatory. Example (it assumes that the build directory is a child of source directory): `cmake -D PATH_TO_QT=/path/to/Qt/SDK/Qt5/5.5/clang_64 ..`
+* Run CMake. Example (it assumes that the build directory is a child of source directory): `cmake ..`
 
 * Build: `make`
 
