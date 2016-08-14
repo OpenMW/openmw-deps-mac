@@ -29,9 +29,9 @@ set(SUBPROJECT_CMAKE_ARGS
 )
 
 set(BOOST_B2_USER_CONFIG "${OPENMW_DEPS_BINARY_DIR}/boost-user-config.jam")
-set(BOOST_DARWIN_PATCH "${OPENMW_DEPS_BINARY_DIR}/boost-darwin.patch")
+set(BOOST_DARWIN_PATCH "${OPENMW_DEPS_BINARY_DIR}/boost.patch")
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/boost-user-config.jam.in" ${BOOST_B2_USER_CONFIG})
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/boost-darwin.patch.in" ${BOOST_DARWIN_PATCH} @ONLY)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/boost.patch.in" ${BOOST_DARWIN_PATCH} @ONLY)
 
 if (CMAKE_BUILD_TYPE EQUAL "Debug")
   set(BOOST_VARIANT "debug")
