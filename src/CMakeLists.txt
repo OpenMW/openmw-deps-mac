@@ -98,6 +98,7 @@ set(FFMPEG_CONFIGURE_ARGS
   "--disable-network"
   "--disable-securetransport"
   "--disable-videotoolbox"
+  "--extra-cflags=-Wno-shift-negative-value"
 )
 
 ExternalProject_Add(
