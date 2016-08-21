@@ -172,7 +172,7 @@ ExternalProject_Add(
   URL http://trac.openscenegraph.org/downloads/developer_releases/OpenSceneGraph-3.4.0.zip
   URL_HASH MD5=a5e762c64373a46932e444f6f7332496
   PATCH_COMMAND patch -p1 -d ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph < ${CMAKE_CURRENT_SOURCE_DIR}/osg.patch
-  DEPENDS SDL2 freetype2 libpng libjpeg
+  DEPENDS freetype2 libpng libjpeg
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
   CMAKE_ARGS ${OSG_CMAKE_ARGS}
 )
