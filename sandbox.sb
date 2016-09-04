@@ -1,0 +1,17 @@
+(version 1)
+
+(allow default)
+
+(deny file-read*
+  (subpath "/usr/local")
+)
+
+(allow file-read*
+  (literal "/usr/local/bin/cmake")
+  (subpath "/usr/local/share/cmake")
+  (subpath "/usr/local/Cellar/cmake")
+  (literal "/usr/local/bin/pkg-config")
+  (subpath "/usr/local/Cellar/pkg-config")
+  (literal "/usr/local/bin/yasm")
+  (subpath "/usr/local/Cellar/yasm")
+)
