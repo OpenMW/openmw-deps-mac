@@ -2,6 +2,36 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index b44ef8b..85c29cd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -173,16 +173,20 @@
+ 
+ IF(NOT ANDROID)
+ IF(APPLE)
+-    # Determine the canonical name of the selected Platform SDK
+-    EXECUTE_PROCESS(COMMAND "/usr/bin/sw_vers" "-productVersion"
+-                    OUTPUT_VARIABLE OSG_OSX_SDK_NAME
+-                    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    STRING(REPLACE "." ";" MACOS_VERSION_LIST ${OSG_OSX_SDK_NAME})
+-    LIST(GET MACOS_VERSION_LIST 0 MACOS_VERSION_MAJOR)
+-    LIST(GET MACOS_VERSION_LIST 1 MACOS_VERSION_MINOR)
+-    LIST(GET MACOS_VERSION_LIST 2 MACOS_VERSION_PATCH)
++    IF(CMAKE_OSX_SYSROOT)
++        SET(OSG_OSX_SDK_NAME "${CMAKE_OSX_SYSROOT}")
++    ELSE()
++        # Determine the canonical name of the selected Platform SDK
++        EXECUTE_PROCESS(COMMAND "/usr/bin/sw_vers" "-productVersion"
++                        OUTPUT_VARIABLE OSG_OSX_SDK_NAME
++                        OUTPUT_STRIP_TRAILING_WHITESPACE)
++        STRING(REPLACE "." ";" MACOS_VERSION_LIST ${OSG_OSX_SDK_NAME})
++        LIST(GET MACOS_VERSION_LIST 0 MACOS_VERSION_MAJOR)
++        LIST(GET MACOS_VERSION_LIST 1 MACOS_VERSION_MINOR)
++        LIST(GET MACOS_VERSION_LIST 2 MACOS_VERSION_PATCH)
+ 
+-    SET(OSG_OSX_SDK_NAME "macosx${MACOS_VERSION_MAJOR}.${MACOS_VERSION_MINOR}")
++        SET(OSG_OSX_SDK_NAME "macosx${MACOS_VERSION_MAJOR}.${MACOS_VERSION_MINOR}")
++    ENDIF()
+ 
+     # Trying to get CMake to generate an XCode IPhone project, current efforts are to get iphoneos sdk 3.1 working
+     # Added option which needs manually setting to select the IPhone SDK for building. We can only have one of the below
 @@ -799,6 +799,8 @@ IF(NOT ANDROID)
          ENDIF()
  
