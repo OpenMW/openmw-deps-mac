@@ -3,7 +3,8 @@ required for [OpenMW](https://github.com/openmw/openmw).
 
 # Prerequisites
 
-* Xcode with OS X 10.11 SDK (7.0+)
+* Xcode with OS X 10.11 SDK (>= 7.0, < 8.0), macOS 10.12 SDK support will be added later
+* Xcode Command Line Tools
 * CMake
 * pkg-config
 
