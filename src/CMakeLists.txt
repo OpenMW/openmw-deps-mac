@@ -12,6 +12,8 @@ endif ()
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.8")
 set(CMAKE_OSX_SYSROOT "macosx10.11")
 
+execute_process(COMMAND xcrun --show-sdk-path --sdk ${CMAKE_OSX_SYSROOT} OUTPUT_VARIABLE FULL_SYSROOT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
+
 if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: Debug, Release" FORCE)
 endif ()
