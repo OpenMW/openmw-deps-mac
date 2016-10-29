@@ -151,8 +151,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   SDL2
-  URL https://libsdl.org/release/SDL2-2.0.4.tar.gz
-  URL_HASH SHA256=da55e540bf6331824153805d58b590a29c39d2d506c6d02fa409aedeab21174b
+  URL https://libsdl.org/release/SDL2-2.0.5.tar.gz
+  URL_HASH SHA256=442038cf55965969f2ff06d976031813de643af9c9edc9e331bd761c242e8785
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDL2
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/SDL2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-x
