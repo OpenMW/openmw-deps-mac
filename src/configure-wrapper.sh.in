@@ -6,7 +6,12 @@ export PKG_CONFIG_PATH="@CMAKE_INSTALL_PREFIX@/lib/pkgconfig"
 
 for VAR_NAME in "${COMPILER_VARS[@]}"; do
   VAR_VALUE=${!VAR_NAME}
-  export $VAR_NAME="$VAR_VALUE -mmacosx-version-min=@CMAKE_OSX_DEPLOYMENT_TARGET@"
+  if [ "$VAR_NAME" == "CXXFLAGS" ] || [ "$VAR_NAME" == "OBJCXXFLAGS" ] ; then
+    EXTRA_CXX_FLAGS="-std=c++11"
+  else
+    EXTRA_CXX_FLAGS=""
+  fi
+  export $VAR_NAME="$VAR_VALUE -mmacosx-version-min=@CMAKE_OSX_DEPLOYMENT_TARGET@ $EXTRA_CXX_FLAGS"
 done
 
 COMMAND_NAME="$1"
