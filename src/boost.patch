@@ -6,7 +6,7 @@ diff --git a/tools/build/src/tools/darwin.jam b/tools/build/src/tools/darwin.jam
  actions link.dll bind LIBRARIES
  {
 -    "$(CONFIG_COMMAND)" -dynamiclib -Wl,-single_module -install_name "$(<:B)$(<:S)" -L"$(LINKPATH)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-SA) -l$(FINDLIBS-ST) $(FRAMEWORK_PATH) -framework$(_)$(FRAMEWORK:D=:S=) $(OPTIONS) $(USER_OPTIONS)
-+    "$(CONFIG_COMMAND)" -dynamiclib -Wl,-single_module -install_name "@CMAKE_INSTALL_PREFIX@/lib/$(<:B)$(<:S)" -L"$(LINKPATH)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-SA) -l$(FINDLIBS-ST) $(FRAMEWORK_PATH) -framework$(_)$(FRAMEWORK:D=:S=) $(OPTIONS) $(USER_OPTIONS)
++    "$(CONFIG_COMMAND)" -dynamiclib -Wl,-single_module -install_name "@rpath/$(<:B)$(<:S)" -L"$(LINKPATH)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-SA) -l$(FINDLIBS-ST) $(FRAMEWORK_PATH) -framework$(_)$(FRAMEWORK:D=:S=) $(OPTIONS) $(USER_OPTIONS)
  }
 
  # We use libtool instead of ar to support universal binary linking
