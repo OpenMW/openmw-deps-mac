@@ -149,6 +149,9 @@ ExternalProject_Add(
   CMAKE_ARGS ${MYGUI_CMAKE_ARGS}
 )
 
+set(SDL2_POSTBUILD_SCRIPT "${OPENMW_DEPS_BINARY_DIR}/SDL2-postbuild.sh")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/SDL2-postbuild.sh" ${SDL2_POSTBUILD_SCRIPT} COPYONLY)
+
 ExternalProject_Add(
   SDL2
   URL https://libsdl.org/release/SDL2-2.0.5.tar.gz
@@ -156,7 +159,7 @@ ExternalProject_Add(
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDL2
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/SDL2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-x
-  BUILD_COMMAND make
+  BUILD_COMMAND make COMMAND sh ${SDL2_POSTBUILD_SCRIPT}
 )
 
 set(OSG_CMAKE_ARGS
