@@ -108,22 +108,23 @@ ExternalProject_Add(
 )
 
 ExternalProject_Add(
-  freetype2
-  URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.bz2
-  URL_HASH SHA256=8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e
-
-  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
-  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/freetype2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-harfbuzz
-  BUILD_COMMAND make
-)
-
-ExternalProject_Add(
   libpng
   URL https://dl.bintray.com/homebrew/mirror/libpng-1.6.20.tar.xz
   URL_HASH SHA256=55c5959e9f3484d96141a3226c53bc9da42a4845e70879d3e1d6e94833d1918b
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
+  BUILD_COMMAND make
+)
+
+ExternalProject_Add(
+  freetype2
+  DEPENDS libpng
+  URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.bz2
+  URL_HASH SHA256=8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e
+
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
+  CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/freetype2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-harfbuzz
   BUILD_COMMAND make
 )
 
