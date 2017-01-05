@@ -9,6 +9,7 @@
 
 (allow file-read*
   (literal "/usr/local/bin/cmake")
+  (literal "/usr/local/bin/cpack")
   (subpath "/usr/local/share/cmake")
   (subpath "/usr/local/Cellar/cmake")
   (literal "/usr/local/bin/pkg-config")
