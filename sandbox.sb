@@ -4,6 +4,7 @@
 
 (deny file-read*
   (subpath "/usr/local")
+  (subpath "/Library/Frameworks")
 )
 
 (allow file-read*
