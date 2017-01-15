@@ -22,3 +22,9 @@ before_script:
   - cmake -DCMAKE_BUILD_TYPE=Debug ..
 script:
   - make -j6 $BUILD_ARTIFACTS
+notifications:
+  email:
+    recipients:
+      - corrmage+travis-ci@gmail.com
+    on_success: change
+    on_failure: always
