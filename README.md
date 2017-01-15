@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/OpenMW/openmw-deps-mac.svg?branch=master)](https://travis-ci.org/OpenMW/openmw-deps-mac)
+
 This repository's intent is to provide an automated way to build all dependencies
 required for [OpenMW](https://github.com/openmw/openmw).
 
