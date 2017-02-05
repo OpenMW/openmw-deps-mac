@@ -13,4 +13,4 @@ COMMAND_NAME="$1"
 
 shift
 
-$COMMAND_NAME "$@"
+sandbox-exec -f "@SANDBOX_PROFILE@" $COMMAND_NAME "$@"
