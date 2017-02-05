@@ -13,6 +13,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.8")
 set(CMAKE_OSX_SYSROOT "macosx10.12")
 
 execute_process(COMMAND xcrun --show-sdk-path --sdk ${CMAKE_OSX_SYSROOT} OUTPUT_VARIABLE FULL_SYSROOT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
+execute_process(COMMAND xcode-select --print-path OUTPUT_VARIABLE XCODE_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: Debug, Release" FORCE)
@@ -20,6 +21,15 @@ endif ()
 
 set(CONFIGURE_WRAPPER "${OPENMW_DEPS_BINARY_DIR}/configure-wrapper.sh")
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/configure-wrapper.sh.in" ${CONFIGURE_WRAPPER} @ONLY)
+
+set(SANDBOX_PROFILE "${OPENMW_DEPS_BINARY_DIR}/sandbox.sb")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/sandbox.sb.in" ${SANDBOX_PROFILE})
+
+set(CMAKE_WRAPPER "${OPENMW_DEPS_BINARY_DIR}/cmake-wrapper.sh")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake-wrapper.sh.in" ${CMAKE_WRAPPER} @ONLY)
+
+set(MAKE_WRAPPER "${OPENMW_DEPS_BINARY_DIR}/make-wrapper.sh")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/make-wrapper.sh.in" ${MAKE_WRAPPER} @ONLY)
 
 set(SUBPROJECT_CMAKE_ARGS
   "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
@@ -87,6 +97,8 @@ ExternalProject_Add(
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bullet
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
+  CMAKE_COMMAND ${CMAKE_WRAPPER}
+  BUILD_COMMAND ${MAKE_WRAPPER}
 )
 
 set(FFMPEG_CONFIGURE_ARGS

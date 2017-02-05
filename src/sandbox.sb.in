@@ -1,0 +1,28 @@
+(version 1)
+
+(trace "/Users/nkasyanov/Desktop/openmwdeps.sb")
+
+(allow default)
+(deny file-read* file-write*)
+
+(allow file-read* file-read-metadata
+  (subpath "${XCODE_PATH}")
+  (literal "/usr/local/bin/cmake")
+  (literal "/usr/local/bin/cpack")
+  (subpath "/usr/local/share/cmake")
+  (subpath "/usr/local/Cellar/cmake")
+  (literal "/usr/local/bin/pkg-config")
+  (subpath "/usr/local/Cellar/pkg-config")
+  (literal "/usr/local/bin/yasm")
+  (subpath "/usr/local/Cellar/yasm")
+  (subpath "/usr/lib")
+  (subpath "/System/Library/Frameworks")
+  (subpath "/System/Library/PrivateFrameworks")
+)
+
+(allow file-read* file-read-metadata file-write*
+  (subpath "${CMAKE_SOURCE_DIR}")
+  (subpath "${CMAKE_BINARY_DIR}")
+  (subpath "/tmp")
+  (subpath "/private/tmp")
+)

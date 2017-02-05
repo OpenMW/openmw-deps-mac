@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sandbox-exec -f "@SANDBOX_PROFILE@" cmake "$@"
