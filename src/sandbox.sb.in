@@ -1,11 +1,12 @@
 (version 1)
+(import "system.sb")
 
 (trace "/Users/nkasyanov/Desktop/openmwdeps.sb")
 
 (allow default)
 (deny file-read* file-write*)
 
-(allow file-read* file-read-metadata
+(allow file-read*
   (subpath "${XCODE_PATH}")
   (literal "/usr/local/bin/cmake")
   (literal "/usr/local/bin/cpack")
@@ -20,7 +21,7 @@
   (subpath "/System/Library/PrivateFrameworks")
 )
 
-(allow file-read* file-read-metadata file-write*
+(allow file-read* file-write*
   (subpath "${CMAKE_SOURCE_DIR}")
   (subpath "${CMAKE_BINARY_DIR}")
   (subpath "/tmp")
