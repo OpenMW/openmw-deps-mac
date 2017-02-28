@@ -82,8 +82,8 @@ set(BULLET_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DBUILD_BULLET3=OFF;-DBUILD_BULL
 
 ExternalProject_Add(
   bullet
-  URL https://github.com/bulletphysics/bullet3/archive/2.83.6.tar.gz
-  URL_HASH SHA256=dcd5448f31ded71c7bd22fddd7d816ac590ae7b97e1fdda8d1253f8ff3655571
+  URL https://github.com/bulletphysics/bullet3/archive/2.86.1.tar.gz
+  URL_HASH SHA256=c058b2e4321ba6adaa656976c1a138c07b18fc03b29f5b82880d5d8228fbf059
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bullet
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
