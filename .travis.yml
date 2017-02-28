@@ -19,9 +19,9 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - sandbox-exec -f ../sandbox.sb cmake -DCMAKE_BUILD_TYPE=Debug ..
+  - cmake -DCMAKE_BUILD_TYPE=Debug ..
 script:
-  - sandbox-exec -f ../sandbox.sb make -j6 $BUILD_ARTIFACTS
+  - make -j6 $BUILD_ARTIFACTS
 notifications:
   email:
     recipients:
