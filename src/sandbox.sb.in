@@ -1,5 +1,5 @@
 (version 1)
-(import "system.sb")
+(import "bsd.sb")
 
 (allow default)
 (deny file-read* file-write*)
@@ -24,4 +24,6 @@
   (subpath "${CMAKE_BINARY_DIR}")
   (subpath "/tmp")
   (subpath "/private/tmp")
+  (regex #"^(/private)?/var/folders/[^/]+/[^/]+/C($|/)")
+  (regex #"^(/private)?/var/folders/[^/]+/[^/]+/T($|/)")
 )
