@@ -103,13 +103,13 @@ diff --git a/src/osgPlugins/CMakeLists.txt b/src/osgPlugins/CMakeLists.txt
 index f2ca656..dbeb39c 100644
 --- a/src/osgPlugins/CMakeLists.txt
 +++ b/src/osgPlugins/CMakeLists.txt
-@@ -215,9 +215,6 @@ ENDIF()
+@@ -239,9 +239,6 @@ ENDIF()
  #    ADD_SUBDIRECTORY(OpenAL)
  # ENDIF()
  
 -IF(APPLE AND NOT ANDROID)
--    ADD_SUBDIRECTORY(imageio)
+-    ADD_PLUGIN_DIRECTORY(imageio)
 -ENDIF()
  
  IF(AV_FOUNDATION_FOUND)
-     ADD_SUBDIRECTORY(avfoundation)
+     ADD_PLUGIN_DIRECTORY(avfoundation)
