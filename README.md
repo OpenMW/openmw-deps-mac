@@ -23,11 +23,12 @@ Pass `-DCMAKE_OSX_SYSROOT=macosx10.11` argument to cmake call if you'd like to b
 
 # Caveats
 
-## Homebrew
+## Unwanted libraries on system paths
 
-If you have lots of formulae installed with Homebrew in `/usr/local`, some of these may be picked up during
-a build and lead to linking with unexpected binaries. For example, OpenSceneGraph tries to use libtiff if present.
-To avoid that OS X sandboxing mechanism can be used.
+Some of libraries and frameworks installed in the system paths (Homebrew formulae included) may be picked up during
+a build and lead to including unexpected header files or linking with unexpected binaries.
+For example, OpenSceneGraph tries to use libtiff if present. Another example can be seen in #35.
+To prevent that OS X sandboxing mechanism can be used.
 
 Here's how the example commands above may look like that with `sandbox-exec`:
 
@@ -35,3 +36,5 @@ Here's how the example commands above may look like that with `sandbox-exec`:
 $ sandbox-exec -f ../sandbox.sb cmake ..
 $ sandbox-exec -f ../sandbox.sb make
 ```
+
+Please note that sandbox profile assumes that CMake, pkg-config & yasm are installed with Homebrew in default prefix.
