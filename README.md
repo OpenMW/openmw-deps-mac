@@ -9,6 +9,7 @@ required for [OpenMW](https://github.com/openmw/openmw).
 Pass `-DCMAKE_OSX_SYSROOT=macosx10.11` argument to cmake call if you'd like to build against Xcode 7.
 * CMake
 * pkg-config
+* yasm
 
 # Building & installing
 
