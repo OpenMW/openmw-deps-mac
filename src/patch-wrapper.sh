@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo "CURRENT DIRECTORY: $PWD"
-
 PATCHFILE=$1
 
 if ! patch -N -R -p1 --dry-run --silent < "$PATCHFILE"; then
