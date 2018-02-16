@@ -1,8 +1,8 @@
 using darwin : : ${CMAKE_CXX_COMPILER} :
     <compileflags>-mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}
-    <compileflags>"-isysroot ${FULL_SYSROOT_PATH}"
+    <compileflags>"-isysroot ${CMAKE_OSX_SYSROOT}"
     <cxxflags>-stdlib=libc++
     <linkflags>-mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}
     <linkflags>-stdlib=libc++
-    <linkflags>"-isysroot ${FULL_SYSROOT_PATH}"
+    <linkflags>"-isysroot ${CMAKE_OSX_SYSROOT}"
 ;
