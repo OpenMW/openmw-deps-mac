@@ -72,8 +72,8 @@ set(BOOST_B2_ARGS
 
 ExternalProject_Add(
   boost
-  URL https://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2
-  URL_HASH SHA256=686affff989ac2488f79a97b9479efb9f2abae035b5ed4d8226de6857933fd3b
+  URL https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2
+  URL_HASH SHA256=5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9
   PATCH_COMMAND ${PATCH_WRAPPER} ${BOOST_DARWIN_PATCH}
 
   BUILD_IN_SOURCE 1
@@ -86,8 +86,8 @@ set(BULLET_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DBUILD_BULLET3=OFF;-DBUILD_BULL
 
 ExternalProject_Add(
   bullet
-  URL https://github.com/bulletphysics/bullet3/archive/2.86.1.tar.gz
-  URL_HASH SHA256=c058b2e4321ba6adaa656976c1a138c07b18fc03b29f5b82880d5d8228fbf059
+  URL https://github.com/bulletphysics/bullet3/archive/2.87.tar.gz
+  URL_HASH SHA256=438c151c48840fe3f902ec260d9496f8beb26dba4b17769a4a53212903935f95
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bullet
   CMAKE_ARGS ${BULLET_CMAKE_ARGS}
@@ -107,8 +107,8 @@ set(FFMPEG_CONFIGURE_ARGS
 
 ExternalProject_Add(
   ffmpeg
-  URL https://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2
-  URL_HASH SHA256=e2ed5ab28dee1af94336739173eb0019afc21a54e38a96f4e3208e94a07866e2
+  URL https://ffmpeg.org/releases/ffmpeg-2.8.13.tar.bz2
+  URL_HASH SHA256=df9b98cb584a004ce8e29b4c954cfb8d9e45dac52b4c6d036f25dfbaa3086778
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/configure ${FFMPEG_CONFIGURE_ARGS}
@@ -117,8 +117,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   libpng
-  URL https://dl.bintray.com/homebrew/mirror/libpng-1.6.20.tar.xz
-  URL_HASH SHA256=55c5959e9f3484d96141a3226c53bc9da42a4845e70879d3e1d6e94833d1918b
+  URL https://dl.bintray.com/homebrew/mirror/libpng-1.6.25.tar.xz
+  URL_HASH SHA256=09fe8d8341e8bfcfb3263100d9ac7ea2155b28dd8535f179111c1672ac8d8811
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
@@ -128,8 +128,8 @@ ExternalProject_Add(
 ExternalProject_Add(
   freetype2
   DEPENDS libpng
-  URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.bz2
-  URL_HASH SHA256=8469fb8124764f85029cc8247c31e132a2c5e51084ddce2a44ea32ee4ae8347e
+  URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.bz2
+  URL_HASH SHA256=e20a6e1400798fd5e3d831dd821b61c35b1f9a6465d6b18a53a9df4cf441acf0
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/freetype2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-harfbuzz
@@ -151,8 +151,9 @@ set(MYGUI_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DMYGUI_RENDERSYSTEM=1;-DMYGUI_BU
 ExternalProject_Add(
   mygui
   DEPENDS freetype2
-  GIT_REPOSITORY https://github.com/MyGUI/mygui.git
-  GIT_TAG 1c5a49c792c23d8b9b6760bb4877447c337e53f6
+  URL https://github.com/MyGUI/mygui/archive/b1e4bc802a63fef015fc1d213d45a520eddc99b3.zip
+  URL_HASH SHA256=c905e4e152b501f91e8ac9eb0fe9cd3f3e845faae6de45edcadd917be5bfece1
+
   PATCH_COMMAND ${PATCH_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/mygui.patch
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/mygui
   CMAKE_ARGS ${MYGUI_CMAKE_ARGS}
@@ -160,8 +161,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   SDL2
-  URL https://libsdl.org/release/SDL2-2.0.6.tar.gz
-  URL_HASH SHA256=03658b5660d16d7b31263a691e058ed37acdab155d68dabbad79998fb552c5df
+  URL https://libsdl.org/release/SDL2-2.0.7.tar.gz
+  URL_HASH SHA256=ee35c74c4313e2eda104b14b1b86f7db84a04eeab9430d56e001cea268bf4d5e
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDL2
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/SDL2/configure --prefix=${CMAKE_INSTALL_PREFIX} --without-x
@@ -181,8 +182,8 @@ set(OSG_CMAKE_ARGS
 
 ExternalProject_Add(
   openscenegraph
-  URL https://github.com/OpenMW/osg/archive/0eff5bb794b5e7daf8a5801147fef7f876dd2ed6.zip
-  URL_HASH SHA256=2e532acb5a46b55c57adaa75116a1755ba5b6b51f7a7041f2273b26f371593e6
+  URL https://github.com/OpenMW/osg/archive/2b4c8e37268e595b82da4b9aadd5507852569b87.zip
+  URL_HASH SHA256=cffee367ee98f6a6953206893772ab99ef90cbfbda5e2ea3e2e135c22659eb01
   PATCH_COMMAND ${PATCH_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/osg.patch
   DEPENDS freetype2 libpng libjpeg
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
@@ -196,8 +197,8 @@ set(UNSHIELD_CMAKE_ARGS
 
 ExternalProject_Add(
   unshield
-  URL https://github.com/twogood/unshield/archive/1.4.tar.gz
-  URL_HASH SHA256=8ae91961212193a7d3d7973c1c9464f3cd1967c179d6099feb1bb193912f8231
+  URL https://github.com/twogood/unshield/archive/1.4.2.tar.gz
+  URL_HASH SHA256=5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/unshield
   CMAKE_ARGS ${UNSHIELD_CMAKE_ARGS}
 )
