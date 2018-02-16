@@ -13,6 +13,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
 set(CMAKE_OSX_SYSROOT "macosx10.13")
 set(CMAKE_CXX_STANDARD 11)
 
+# use CMAKE_OSX_SYSROOT as is if it points to existing directory, lookup full path otherwise
 if(NOT EXISTS CMAKE_OSX_SYSROOT)
   execute_process(COMMAND xcrun --show-sdk-path --sdk ${CMAKE_OSX_SYSROOT} OUTPUT_VARIABLE CMAKE_OSX_SYSROOT OUTPUT_STRIP_TRAILING_WHITESPACE)
 endif ()
