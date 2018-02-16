@@ -8,3 +8,4 @@ src/mygui
 src/openscenegraph
 src/SDL2
 src/unshield
+build/
