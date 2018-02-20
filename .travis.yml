@@ -20,7 +20,7 @@ before_script:
   - cd build
   - sandbox-exec -f ../sandbox.sb cmake -DCMAKE_BUILD_TYPE=Release ..
 script:
-  - sandbox-exec -f ../sandbox.sb make -j6 $BUILD_ARTIFACTS
+  - sandbox-exec -f ../sandbox.sb make -j4 $BUILD_ARTIFACTS
 notifications:
   email:
     recipients:
