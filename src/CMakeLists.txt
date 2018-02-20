@@ -14,8 +14,21 @@ set(CMAKE_OSX_SYSROOT "macosx10.13")
 set(CMAKE_CXX_STANDARD 11)
 
 # use CMAKE_OSX_SYSROOT as is if it points to existing directory, lookup full path otherwise
-if(NOT EXISTS CMAKE_OSX_SYSROOT)
-  execute_process(COMMAND xcrun --show-sdk-path --sdk ${CMAKE_OSX_SYSROOT} OUTPUT_VARIABLE CMAKE_OSX_SYSROOT OUTPUT_STRIP_TRAILING_WHITESPACE)
+if (NOT EXISTS CMAKE_OSX_SYSROOT)
+  find_program(XCRUN xcrun)
+  if (NOT XCRUN)
+    message(FATAL_ERROR "xcrun not found, please install Xcode CLI tools")
+  endif ()
+  execute_process(COMMAND
+    ${XCRUN} --show-sdk-path --sdk ${CMAKE_OSX_SYSROOT}
+    OUTPUT_VARIABLE CMAKE_OSX_SYSROOT OUTPUT_STRIP_TRAILING_WHITESPACE
+    ERROR_VARIABLE XCRUN_ERROR ERROR_STRIP_TRAILING_WHITESPACE
+  )
+  if (XCRUN_ERROR)
+    message(FATAL_ERROR ${XCRUN_ERROR})
+    unset(XCRUN_ERROR)
+  endif ()
+  unset(XCRUN)
 endif ()
 
 if (NOT CMAKE_BUILD_TYPE)
