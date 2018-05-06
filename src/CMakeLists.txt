@@ -10,7 +10,7 @@ if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif ()
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
-set(CMAKE_OSX_SYSROOT "macosx10.13")
+set(CMAKE_OSX_SYSROOT "macosx10.13" CACHE PATH "macOS SDK")
 set(CMAKE_CXX_STANDARD 11)
 
 # use CMAKE_OSX_SYSROOT as is if it points to existing directory, lookup full path otherwise
