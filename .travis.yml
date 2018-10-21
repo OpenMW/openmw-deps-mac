@@ -5,7 +5,7 @@ env:
   - BUILD_ARTIFACTS=boost
   - BUILD_ARTIFACTS=openscenegraph
   - BUILD_ARTIFACTS="bullet ffmpeg mygui SDL2 unshield"
-osx_image: xcode9.4
+osx_image: xcode10
 branches:
   only:
     - master
@@ -18,7 +18,7 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - sandbox-exec -f ../sandbox.sb cmake -DCMAKE_BUILD_TYPE=Release -D CMAKE_OSX_SYSROOT=macosx10.13 ..
+  - sandbox-exec -f ../sandbox.sb cmake -DCMAKE_BUILD_TYPE=Release -D CMAKE_OSX_SYSROOT=macosx10.14 ..
 script:
   - sandbox-exec -f ../sandbox.sb make -j4 $BUILD_ARTIFACTS
 notifications:
