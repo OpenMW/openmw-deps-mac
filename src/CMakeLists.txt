@@ -120,6 +120,8 @@ set(FFMPEG_CONFIGURE_ARGS
   "--disable-securetransport"
   "--disable-videotoolbox"
   "--disable-audiotoolbox"
+  "--disable-avfilter"
+  "--disable-avdevice"
   "--extra-cflags=-Wno-shift-negative-value"
 )
 
