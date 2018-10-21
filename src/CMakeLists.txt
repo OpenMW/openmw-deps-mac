@@ -113,18 +113,20 @@ set(FFMPEG_CONFIGURE_ARGS
   "--prefix=${CMAKE_INSTALL_PREFIX}"
   "--disable-programs"
   "--disable-iconv"
+  "--disable-sdl2"
   "--disable-doc"
   "--disable-demuxer=matroska"
   "--disable-network"
   "--disable-securetransport"
   "--disable-videotoolbox"
+  "--disable-audiotoolbox"
   "--extra-cflags=-Wno-shift-negative-value"
 )
 
 ExternalProject_Add(
   ffmpeg
-  URL https://ffmpeg.org/releases/ffmpeg-2.8.13.tar.bz2
-  URL_HASH SHA256=df9b98cb584a004ce8e29b4c954cfb8d9e45dac52b4c6d036f25dfbaa3086778
+  URL https://ffmpeg.org/releases/ffmpeg-3.2.4.tar.bz2
+  URL_HASH SHA256=c0fa3593a2e9e96ace3c1757900094437ad96d1d6ca19f057c378b5f394496a4
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/configure ${FFMPEG_CONFIGURE_ARGS}
