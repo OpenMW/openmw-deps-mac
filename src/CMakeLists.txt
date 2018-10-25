@@ -171,8 +171,8 @@ set(MYGUI_CMAKE_ARGS "${SUBPROJECT_CMAKE_ARGS};-DMYGUI_RENDERSYSTEM=1;-DMYGUI_BU
 ExternalProject_Add(
   mygui
   DEPENDS freetype2
-  URL https://github.com/MyGUI/mygui/archive/b1e4bc802a63fef015fc1d213d45a520eddc99b3.zip
-  URL_HASH SHA256=c905e4e152b501f91e8ac9eb0fe9cd3f3e845faae6de45edcadd917be5bfece1
+  URL https://github.com/MyGUI/mygui/archive/1c5a49c792c23d8b9b6760bb4877447c337e53f6.zip
+  URL_HASH SHA256=aadf20093b32fc4083fb0fc1142e901081ed8e016c910ef927f85058bf7d4b3e
 
   PATCH_COMMAND ${PATCH_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/mygui.patch
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/mygui
