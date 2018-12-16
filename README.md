@@ -5,8 +5,7 @@ required for [OpenMW](https://github.com/openmw/openmw).
 
 # Prerequisites
 
-* Xcode with OS X 10.11 or 10.12 SDK (>= 7.0, < 9.0). Please note that by default 10.12 SDK is assumed.
-Pass `-DCMAKE_OSX_SYSROOT=macosx10.11` argument to cmake call if you'd like to build against Xcode 7.
+* Xcode, 10.* is recommended, although it's possible to build using an older Xcode version by passing macOS SDK version to CMake like this: `-DCMAKE_OSX_SYSROOT=macosx10.13` (corresponds to Xcode 9.*).
 * CMake
 * pkg-config
 * yasm
