@@ -81,6 +81,7 @@ set(BOOST_B2_ARGS
   "--with-filesystem"
   "--with-program_options"
   "--with-thread"
+  "--with-iostreams"
   "install"
   "link=shared"
   "threading=multi"
