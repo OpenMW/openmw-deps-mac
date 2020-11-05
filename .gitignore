@@ -4,6 +4,7 @@ src/ffmpeg
 src/freetype2
 src/libjpeg
 src/libpng
+src/lz4
 src/mygui
 src/openscenegraph
 src/SDL2
