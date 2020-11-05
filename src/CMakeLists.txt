@@ -124,6 +124,7 @@ set(FFMPEG_CONFIGURE_ARGS
   "--disable-audiotoolbox"
   "--disable-avfilter"
   "--disable-avdevice"
+  "--disable-lzma"
   "--extra-cflags=-Wno-shift-negative-value"
 )
 
