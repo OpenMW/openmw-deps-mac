@@ -258,4 +258,8 @@ install(DIRECTORY "${CMAKE_INSTALL_PREFIX}" USE_SOURCE_PERMISSIONS DESTINATION "
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_FILE_NAME "openmw-deps-${GIT_SHORT_COMMIT_HASH}")
 set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+install(CODE "
+  execute_process(COMMAND bash -c \"find '\${CMAKE_INSTALL_PREFIX}' -name '*.pc' -exec sed -i '' 's=${CMAKE_INSTALL_PREFIX}=/private/tmp/openmw-deps=g' {} \;\")
+")
+message(STATUS "CPACK_INSTALL_COMMANDS ${CPACK_INSTALL_COMMANDS}")
 include(CPack)
