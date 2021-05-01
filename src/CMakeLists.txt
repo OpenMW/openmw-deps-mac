@@ -151,7 +151,7 @@ ExternalProject_Add(
 ExternalProject_Add(
   freetype2
   DEPENDS libpng
-  URL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.bz2
+  URL https://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.bz2
   URL_HASH SHA256=e20a6e1400798fd5e3d831dd821b61c35b1f9a6465d6b18a53a9df4cf441acf0
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
@@ -161,8 +161,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   libjpeg
-  URL http://www.ijg.org/files/jpegsrc.v8d.tar.gz
-  URL_HASH SHA256=00029b1473f0f0ea72fbca3230e8cb25797fbb27e58ae2e46bb8bf5a806fe0b3
+  URL https://www.ijg.org/files/jpegsrc.v8d.tar.gz
+  URL_HASH SHA256=d625ad6b3375a036bf30cd3b0b40e8dde08f0891bfd3a2960650654bdb50318c
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libjpeg/configure --prefix=${CMAKE_INSTALL_PREFIX}
