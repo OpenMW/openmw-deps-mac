@@ -1,12 +1,24 @@
 diff --git a/tools/build/src/tools/darwin.jam b/tools/build/src/tools/darwin.jam
 --- a/tools/build/src/tools/darwin.jam
 +++ b/tools/build/src/tools/darwin.jam
-@@ -579,7 +579,7 @@ rule link.dll ( targets * : sources * : properties * )
-
+@@ -137,11 +137,6 @@ rule init ( version ? : command * : options * : requirement * )
+     # - Set the toolset generic common options.
+     common.handle-options darwin : $(condition) : $(command) : $(options) ;
+     
+-    # - GCC 4.0 and higher in Darwin does not have -fcoalesce-templates.
+-    if $(real-version) < "4.0.0"
+-    {
+-        flags darwin.compile.c++ OPTIONS $(condition) : -fcoalesce-templates ;
+-    }
+     # - GCC 4.2 and higher in Darwin does not have -Wno-long-double.
+     if $(real-version) < "4.2.0"
+     {
+@@ -612,7 +607,7 @@ rule link.dll ( targets * : sources * : properties * )
+ 
  actions link.dll bind LIBRARIES
  {
 -    "$(CONFIG_COMMAND)" -dynamiclib -Wl,-single_module -install_name "$(<:B)$(<:S)" -L"$(LINKPATH)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-SA) -l$(FINDLIBS-ST) $(FRAMEWORK_PATH) -framework$(_)$(FRAMEWORK:D=:S=) $(OPTIONS) $(USER_OPTIONS)
 +    "$(CONFIG_COMMAND)" -dynamiclib -Wl,-single_module -install_name "@rpath/$(<:B)$(<:S)" -L"$(LINKPATH)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-SA) -l$(FINDLIBS-ST) $(FRAMEWORK_PATH) -framework$(_)$(FRAMEWORK:D=:S=) $(OPTIONS) $(USER_OPTIONS)
  }
-
+ 
  # We use libtool instead of ar to support universal binary linking
