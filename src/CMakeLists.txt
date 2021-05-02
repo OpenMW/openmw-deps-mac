@@ -140,8 +140,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   libpng
-  URL https://dl.bintray.com/homebrew/mirror/libpng-1.6.25.tar.xz
-  URL_HASH SHA256=09fe8d8341e8bfcfb3263100d9ac7ea2155b28dd8535f179111c1672ac8d8811
+  URL https://download.sourceforge.net/libpng/libpng-1.6.37.tar.gz
+  URL_HASH SHA256=daeb2620d829575513e35fecc83f0d3791a620b9b93d800b763542ece9390fb4
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
