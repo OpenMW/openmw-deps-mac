@@ -140,8 +140,8 @@ ExternalProject_Add(
 
 ExternalProject_Add(
   libpng
-  URL https://dl.bintray.com/homebrew/mirror/libpng-1.6.25.tar.xz
-  URL_HASH SHA256=09fe8d8341e8bfcfb3263100d9ac7ea2155b28dd8535f179111c1672ac8d8811
+  URL https://download.sourceforge.net/libpng/libpng-1.6.37.tar.gz
+  URL_HASH SHA256=daeb2620d829575513e35fecc83f0d3791a620b9b93d800b763542ece9390fb4
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libpng
   CONFIGURE_COMMAND ${CONFIGURE_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/libpng/configure --prefix=${CMAKE_INSTALL_PREFIX}
@@ -226,8 +226,8 @@ set(OSG_CMAKE_ARGS
 
 ExternalProject_Add(
   openscenegraph
-  URL https://github.com/OpenMW/osg/archive/2b4c8e37268e595b82da4b9aadd5507852569b87.zip
-  URL_HASH SHA256=cffee367ee98f6a6953206893772ab99ef90cbfbda5e2ea3e2e135c22659eb01
+  URL https://github.com/OpenMW/osg/archive/76e061739610bc9a3420a59e7c9395e742ce2f97.zip
+  URL_HASH SHA256=fa1100362eae260192819d65d90b29ec0b88fdf80e30cee677730b7a0d68637e
   PATCH_COMMAND ${PATCH_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/osg.patch
   DEPENDS freetype2 libpng libjpeg
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
