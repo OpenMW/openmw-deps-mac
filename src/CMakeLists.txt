@@ -226,8 +226,8 @@ set(OSG_CMAKE_ARGS
 
 ExternalProject_Add(
   openscenegraph
-  URL https://github.com/OpenMW/osg/archive/2b4c8e37268e595b82da4b9aadd5507852569b87.zip
-  URL_HASH SHA256=cffee367ee98f6a6953206893772ab99ef90cbfbda5e2ea3e2e135c22659eb01
+  URL https://github.com/OpenMW/osg/archive/76e061739610bc9a3420a59e7c9395e742ce2f97.zip
+  URL_HASH SHA256=fa1100362eae260192819d65d90b29ec0b88fdf80e30cee677730b7a0d68637e
   PATCH_COMMAND ${PATCH_WRAPPER} ${CMAKE_CURRENT_SOURCE_DIR}/osg.patch
   DEPENDS freetype2 libpng libjpeg
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/openscenegraph
