@@ -90,7 +90,7 @@ set(BOOST_B2_ARGS
 
 ExternalProject_Add(
   boost
-  URL https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2
+  URL https://download.sourceforge.net/boost/boost/1.66.0/boost_1_66_0.tar.bz2
   URL_HASH SHA256=5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9
   PATCH_COMMAND ${PATCH_WRAPPER} ${BOOST_DARWIN_PATCH}
 
@@ -151,7 +151,7 @@ ExternalProject_Add(
 ExternalProject_Add(
   freetype2
   DEPENDS libpng
-  URL https://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.bz2
+  URL https://download.savannah.gnu.org/releases/freetype/freetype-old/freetype-2.6.5.tar.bz2
   URL_HASH SHA256=e20a6e1400798fd5e3d831dd821b61c35b1f9a6465d6b18a53a9df4cf441acf0
 
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/freetype2
