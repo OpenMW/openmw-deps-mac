@@ -1,3 +1,7 @@
+# THIS REPO HAS BEEN MOVED TO GITLAB
+
+https://gitlab.com/OpenMW/openmw-dep
+
 [![Build Status](https://travis-ci.org/OpenMW/openmw-deps-mac.svg?branch=master)](https://travis-ci.org/OpenMW/openmw-deps-mac)
 
 This repository's intent is to provide an automated way to build all dependencies
